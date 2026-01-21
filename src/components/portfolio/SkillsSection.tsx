@@ -20,7 +20,7 @@ const skillCategories = [
   {
     title: "Technical Skills",
     icon: Code2,
-    color: "secondary",
+    gradient: "from-[hsl(335,73%,49%)] to-[hsl(349,88%,74%)]",
     skills: [
       { name: "Python", icon: Code2 },
       { name: "Machine Learning", icon: Brain },
@@ -33,7 +33,7 @@ const skillCategories = [
   {
     title: "Tools & Platforms",
     icon: Wrench,
-    color: "primary",
+    gradient: "from-[hsl(301,82%,80%)] to-[hsl(315,36%,66%)]",
     skills: [
       { name: "Jupyter Notebook", icon: FileText },
       { name: "Google Colab", icon: Code2 },
@@ -46,7 +46,7 @@ const skillCategories = [
   {
     title: "Professional Skills",
     icon: Users,
-    color: "highlight",
+    gradient: "from-[hsl(349,64%,78%)] to-[hsl(313,24%,75%)]",
     skills: [
       { name: "Ethical AI Reasoning", icon: Shield },
       { name: "Data Interpretation", icon: BarChart3 },
@@ -63,10 +63,14 @@ export const SkillsSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="skills" className="section-padding bg-muted/30 relative overflow-hidden">
+    <section id="skills" className="section-padding relative overflow-hidden bg-muted/30">
       {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+      <div className="absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl opacity-30"
+        style={{ background: "var(--gradient-blush)" }}
+      />
+      <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full blur-3xl opacity-20"
+        style={{ background: "var(--gradient-orchid)" }}
+      />
 
       <div className="section-container relative z-10" ref={ref}>
         {/* Section Header */}
@@ -76,11 +80,11 @@ export const SkillsSection = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <span className="inline-block text-secondary font-semibold text-sm uppercase tracking-wider mb-4">
+          <span className="inline-block text-primary font-semibold text-sm uppercase tracking-wider mb-4">
             What I Do
           </span>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Skills & <span className="text-secondary">Expertise</span>
+            Skills & <span className="text-primary">Expertise</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             A comprehensive toolkit spanning AI development, ethical technology practices, 
@@ -96,43 +100,42 @@ export const SkillsSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: categoryIndex * 0.15, duration: 0.5 }}
-              className="bg-card rounded-2xl p-6 lg:p-8 shadow-lg border border-border card-hover"
+              className="group relative"
             >
-              {/* Category Header */}
-              <div className="flex items-center gap-3 mb-6">
-                <div
-                  className={`w-12 h-12 rounded-xl flex items-center justify-center ${
-                    category.color === "secondary"
-                      ? "bg-secondary/10 text-secondary"
-                      : category.color === "primary"
-                      ? "bg-primary/10 text-primary"
-                      : "bg-highlight/10 text-highlight"
-                  }`}
-                >
-                  <category.icon className="w-6 h-6" />
+              {/* Glow effect */}
+              <div className="absolute -inset-0.5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-lg"
+                style={{ background: `linear-gradient(135deg, hsl(335 73% 49% / 0.3), hsl(301 82% 80% / 0.3))` }}
+              />
+              
+              <div className="relative bg-card rounded-2xl p-6 lg:p-8 shadow-lg border border-border card-hover">
+                {/* Category Header */}
+                <div className="flex items-center gap-3 mb-6">
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br ${category.gradient}`}>
+                    <category.icon className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="font-display text-xl font-bold text-foreground">
+                    {category.title}
+                  </h3>
                 </div>
-                <h3 className="font-display text-xl font-bold text-foreground">
-                  {category.title}
-                </h3>
-              </div>
 
-              {/* Skills List */}
-              <div className="flex flex-wrap gap-2">
-                {category.skills.map((skill, skillIndex) => (
-                  <motion.div
-                    key={skill.name}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                    transition={{
-                      delay: categoryIndex * 0.15 + skillIndex * 0.05 + 0.2,
-                      duration: 0.3,
-                    }}
-                    className="skill-badge"
-                  >
-                    <skill.icon className="w-4 h-4" />
-                    <span>{skill.name}</span>
-                  </motion.div>
-                ))}
+                {/* Skills List */}
+                <div className="flex flex-wrap gap-2">
+                  {category.skills.map((skill, skillIndex) => (
+                    <motion.div
+                      key={skill.name}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                      transition={{
+                        delay: categoryIndex * 0.15 + skillIndex * 0.05 + 0.2,
+                        duration: 0.3,
+                      }}
+                      className="skill-badge"
+                    >
+                      <skill.icon className="w-4 h-4" />
+                      <span>{skill.name}</span>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
             </motion.div>
           ))}
