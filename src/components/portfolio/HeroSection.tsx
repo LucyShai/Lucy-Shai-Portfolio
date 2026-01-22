@@ -3,17 +3,10 @@ import { ArrowDown, Download, Github, Linkedin, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { HeroSlideshow } from "./HeroSlideshow";
 
-// Import profile image - replace with actual image path when available
+// Uncomment when profile image is added:
 // import profileImage from "@/assets/profile-image.png";
 
 export const HeroSection = () => {
-  const scrollToProjects = () => {
-    const element = document.querySelector("#projects");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <section
       id="home"
@@ -86,127 +79,135 @@ export const HeroSection = () => {
 
       <div className="section-container relative z-10 py-20 lg:py-0">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left Side - Slideshow */}
+          {/* Left Side - Profile Image with Overlay Text Card */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="order-2 lg:order-1"
           >
-            <HeroSlideshow />
+            <div className="relative">
+              {/* Profile Image Container */}
+              <div className="relative w-full max-w-md mx-auto lg:mx-0">
+                {/* Main profile image */}
+                <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[3/4]">
+                  {/* Placeholder - Replace with actual profile image */}
+                  <div className="w-full h-full bg-gradient-to-br from-[hsl(349,64%,78%)] to-[hsl(315,36%,66%)] flex items-center justify-center">
+                    <div className="text-center text-white/80">
+                      <div className="w-32 h-32 mx-auto mb-4 rounded-full bg-white/20 flex items-center justify-center border-4 border-white/30">
+                        <span className="text-5xl font-display font-bold">LS</span>
+                      </div>
+                      <p className="text-sm">Profile Image</p>
+                    </div>
+                  </div>
+                  {/* When you have the image, use this instead:
+                  <img 
+                    src={profileImage}
+                    alt="Lucy Shai - Software Developer & AI Enthusiast"
+                    className="w-full h-full object-cover"
+                  />
+                  */}
+                </div>
+
+                {/* Overlay Card at Bottom */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4, duration: 0.6 }}
+                  className="absolute -bottom-6 -right-6 left-6 bg-gradient-to-br from-[hsl(335,73%,49%)] to-[hsl(349,88%,55%)] rounded-2xl p-6 shadow-xl"
+                >
+                  <h1 className="font-display text-xl sm:text-2xl font-bold text-white leading-tight mb-2">
+                    Aspiring AI &{" "}
+                    <span className="text-[hsl(48,85%,70%)]">Software Developer</span>
+                  </h1>
+                  <p className="text-white/80 text-xs sm:text-sm mb-4">
+                    Ethical & Applied AI Solutions
+                  </p>
+                  <p className="text-white/70 text-xs leading-relaxed mb-4 hidden sm:block">
+                    Software Development graduate from Nelson Mandela University with experience in 
+                    C#, SQL, software design, AI, and Python-based data analysis.
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    <Button
+                      size="sm"
+                      className="bg-white text-[hsl(335,73%,49%)] hover:bg-white/90 font-semibold text-xs"
+                      asChild
+                    >
+                      <a href="#projects">
+                        View Projects
+                        <ArrowDown className="w-3 h-3 ml-1" />
+                      </a>
+                    </Button>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="border-white/50 text-white hover:bg-white/10 font-semibold text-xs"
+                      asChild
+                    >
+                      <a href="#contact">
+                        <Download className="w-3 h-3 mr-1" />
+                        Download Resume
+                      </a>
+                    </Button>
+                  </div>
+                </motion.div>
+
+                {/* Social Links */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.8, duration: 0.6 }}
+                  className="absolute top-4 right-4 flex flex-col gap-2"
+                >
+                  <a
+                    href="https://github.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2.5 rounded-full bg-white/90 text-[hsl(335,73%,40%)] hover:bg-[hsl(349,88%,74%)] hover:text-white hover:scale-110 transition-all duration-300 shadow-lg"
+                    aria-label="GitHub"
+                  >
+                    <Github className="w-4 h-4" />
+                  </a>
+                  <a
+                    href="https://linkedin.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2.5 rounded-full bg-white/90 text-[hsl(335,73%,40%)] hover:bg-[hsl(349,88%,74%)] hover:text-white hover:scale-110 transition-all duration-300 shadow-lg"
+                    aria-label="LinkedIn"
+                  >
+                    <Linkedin className="w-4 h-4" />
+                  </a>
+                </motion.div>
+
+                {/* Floating badge */}
+                <motion.div
+                  className="absolute -top-3 left-4 px-3 py-1.5 rounded-full bg-white/95 shadow-lg backdrop-blur-sm"
+                  animate={{
+                    y: [0, -6, 0],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                >
+                  <div className="flex items-center gap-1.5">
+                    <Sparkles className="w-3 h-3 text-[hsl(349,88%,55%)]" />
+                    <span className="text-xs font-semibold text-[hsl(335,73%,40%)]">Open to opportunities</span>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
           </motion.div>
 
-          {/* Right Side - Profile Image */}
+          {/* Right Side - Slideshow */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-            className="relative order-1 lg:order-2 flex justify-center lg:justify-end"
+            className="order-1 lg:order-2"
           >
-            <div className="relative">
-              {/* Decorative background shapes */}
-              <motion.div
-                className="absolute -top-6 -right-6 w-full h-full rounded-3xl bg-gradient-to-br from-[hsl(349,88%,74%)] to-[hsl(301,82%,80%)] opacity-60"
-                animate={{
-                  rotate: [0, 3, 0, -3, 0],
-                }}
-                transition={{
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
-              <motion.div
-                className="absolute -bottom-4 -left-4 w-32 h-32 rounded-full bg-[hsl(48,85%,50%)] opacity-50"
-                animate={{
-                  scale: [1, 1.1, 1],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
-              
-              {/* Main image container */}
-              <div className="relative w-72 h-80 sm:w-80 sm:h-96 lg:w-96 lg:h-[28rem] rounded-3xl overflow-hidden border-4 border-white/30 shadow-2xl">
-                {/* Profile Image */}
-                <img 
-                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=500&fit=crop&crop=face"
-                  alt="Lucy Shai - Software Developer & AI Enthusiast"
-                  className="w-full h-full object-cover"
-                />
-                
-                {/* Gradient overlay at bottom for text */}
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[hsl(335,73%,30%)/90] via-[hsl(335,73%,30%)/50] to-transparent pt-20 pb-6 px-6">
-                  <h3 className="text-2xl sm:text-3xl font-display font-bold text-white drop-shadow-lg">
-                    Lucy Shai
-                  </h3>
-                  <p className="text-white/90 text-sm sm:text-base mt-1">
-                    Software Developer | AI Enthusiast
-                  </p>
-                </div>
-
-                {/* Decorative overlay elements */}
-                <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-[hsl(48,85%,50%)] opacity-80" />
-              </div>
-
-              {/* Floating badge */}
-              <motion.div
-                className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full bg-white/95 shadow-lg backdrop-blur-sm"
-                animate={{
-                  y: [0, -8, 0],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              >
-                <div className="flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-[hsl(349,88%,55%)]" />
-                  <span className="text-sm font-semibold text-[hsl(335,73%,40%)]">AI Developer</span>
-                </div>
-              </motion.div>
-
-              {/* Social Links - positioned below image */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.8, duration: 0.6 }}
-                className="absolute -bottom-16 left-1/2 -translate-x-1/2 flex items-center gap-3"
-              >
-                <a
-                  href="https://github.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 rounded-full bg-white/90 text-[hsl(335,73%,40%)] hover:bg-[hsl(349,88%,74%)] hover:text-white hover:scale-110 transition-all duration-300 shadow-lg"
-                  aria-label="GitHub"
-                >
-                  <Github className="w-5 h-5" />
-                </a>
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 rounded-full bg-white/90 text-[hsl(335,73%,40%)] hover:bg-[hsl(349,88%,74%)] hover:text-white hover:scale-110 transition-all duration-300 shadow-lg"
-                  aria-label="LinkedIn"
-                >
-                  <Linkedin className="w-5 h-5" />
-                </a>
-                <Button
-                  size="sm"
-                  variant="secondary"
-                  className="shadow-lg"
-                  asChild
-                >
-                  <a href="#contact">
-                    <Download className="w-4 h-4" />
-                    Resume
-                  </a>
-                </Button>
-              </motion.div>
-            </div>
+            <HeroSlideshow />
           </motion.div>
         </div>
 
