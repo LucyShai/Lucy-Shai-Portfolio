@@ -52,18 +52,8 @@ export const Navigation = () => {
       >
         <div className="section-container">
           <div className="flex items-center justify-between h-16 md:h-20">
-            {/* Logo */}
-            <motion.a
-              href="#home"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection("#home");
-              }}
-              className="font-display text-xl md:text-2xl font-bold text-foreground"
-              whileHover={{ scale: 1.02 }}
-            >
-              Lucy<span className="text-secondary">Shai</span>
-            </motion.a>
+            {/* Empty space for layout balance */}
+            <div className="w-20" />
 
             {/* Spacer for center alignment */}
             <div className="hidden md:block" />

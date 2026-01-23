@@ -84,7 +84,17 @@ export const HeroSection = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="order-2 lg:order-1"
           >
-            <div className="relative h-[400px] lg:h-[500px]">
+            {/* Name Above Image */}
+            <motion.h2
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="font-display text-3xl sm:text-4xl font-bold text-white text-center lg:text-left mb-6"
+            >
+              Lucy<span className="text-[hsl(48,85%,70%)]">Shai</span>
+            </motion.h2>
+
+            <div className="relative h-[280px] lg:h-[350px]">
               {/* Profile Image Container */}
               <div className="relative w-full h-full max-w-sm mx-auto lg:mx-0">
                 {/* Main profile image */}
@@ -92,11 +102,11 @@ export const HeroSection = () => {
                   <img 
                     src={profileImage}
                     alt="Lucy Shai - Software Developer & AI Enthusiast"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-top"
                   />
                   
                   {/* Gradient overlay at bottom for text readability */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                 </div>
 
                 {/* Text Card Below Image */}
