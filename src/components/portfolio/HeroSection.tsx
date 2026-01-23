@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowDown, Download, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowDown, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { HeroSlideshow } from "./HeroSlideshow";
 import profileImage from "@/assets/profile-image.jpg";
@@ -84,11 +84,11 @@ export const HeroSection = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="order-2 lg:order-1"
           >
-            <div className="relative">
+            <div className="relative h-[400px] lg:h-[500px]">
               {/* Profile Image Container */}
-              <div className="relative w-full max-w-xs mx-auto lg:mx-0">
+              <div className="relative w-full h-full max-w-sm mx-auto lg:mx-0">
                 {/* Main profile image */}
-                <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[3/4]">
+                <div className="relative rounded-3xl overflow-hidden shadow-2xl h-full">
                   <img 
                     src={profileImage}
                     alt="Lucy Shai - Software Developer & AI Enthusiast"
@@ -98,40 +98,6 @@ export const HeroSection = () => {
                   {/* Gradient overlay at bottom for text readability */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 </div>
-
-                {/* Social Links - Top Right of Image */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.8, duration: 0.6 }}
-                  className="absolute top-4 right-4 flex flex-col gap-2"
-                >
-                  <a
-                    href="https://github.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2.5 rounded-full bg-white/90 text-[hsl(335,73%,40%)] hover:bg-[hsl(349,88%,74%)] hover:text-white hover:scale-110 transition-all duration-300 shadow-lg"
-                    aria-label="GitHub"
-                  >
-                    <Github className="w-4 h-4" />
-                  </a>
-                  <a
-                    href="https://linkedin.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2.5 rounded-full bg-white/90 text-[hsl(335,73%,40%)] hover:bg-[hsl(349,88%,74%)] hover:text-white hover:scale-110 transition-all duration-300 shadow-lg"
-                    aria-label="LinkedIn"
-                  >
-                    <Linkedin className="w-4 h-4" />
-                  </a>
-                  <a
-                    href="mailto:kgorutla9@gmail.com"
-                    className="p-2.5 rounded-full bg-white/90 text-[hsl(335,73%,40%)] hover:bg-[hsl(349,88%,74%)] hover:text-white hover:scale-110 transition-all duration-300 shadow-lg"
-                    aria-label="Email"
-                  >
-                    <Mail className="w-4 h-4" />
-                  </a>
-                </motion.div>
 
                 {/* Text Card Below Image */}
                 <motion.div
