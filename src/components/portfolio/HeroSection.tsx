@@ -1,10 +1,8 @@
 import { motion } from "framer-motion";
-import { ArrowDown, Download, Github, Linkedin, Sparkles } from "lucide-react";
+import { ArrowDown, Download, Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { HeroSlideshow } from "./HeroSlideshow";
-
-// Uncomment when profile image is added:
-// import profileImage from "@/assets/profile-image.png";
+import profileImage from "@/assets/profile-image.jpg";
 
 export const HeroSection = () => {
   return (
@@ -91,68 +89,17 @@ export const HeroSection = () => {
               <div className="relative w-full max-w-md mx-auto lg:mx-0">
                 {/* Main profile image */}
                 <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[3/4]">
-                  {/* Placeholder - Replace with actual profile image */}
-                  <div className="w-full h-full bg-gradient-to-br from-[hsl(349,64%,78%)] to-[hsl(315,36%,66%)] flex items-center justify-center">
-                    <div className="text-center text-white/80">
-                      <div className="w-32 h-32 mx-auto mb-4 rounded-full bg-white/20 flex items-center justify-center border-4 border-white/30">
-                        <span className="text-5xl font-display font-bold">LS</span>
-                      </div>
-                      <p className="text-sm">Profile Image</p>
-                    </div>
-                  </div>
-                  {/* When you have the image, use this instead:
                   <img 
                     src={profileImage}
                     alt="Lucy Shai - Software Developer & AI Enthusiast"
                     className="w-full h-full object-cover"
                   />
-                  */}
+                  
+                  {/* Gradient overlay at bottom for text readability */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 </div>
 
-                {/* Overlay Card at Bottom */}
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4, duration: 0.6 }}
-                  className="absolute -bottom-6 -right-6 left-6 bg-gradient-to-br from-[hsl(335,73%,49%)] to-[hsl(349,88%,55%)] rounded-2xl p-6 shadow-xl"
-                >
-                  <h1 className="font-display text-xl sm:text-2xl font-bold text-white leading-tight mb-2">
-                    Aspiring AI &{" "}
-                    <span className="text-[hsl(48,85%,70%)]">Software Developer</span>
-                  </h1>
-                  <p className="text-white/80 text-xs sm:text-sm mb-4">
-                    Ethical & Applied AI Solutions
-                  </p>
-                  <p className="text-white/70 text-xs leading-relaxed mb-4 hidden sm:block">
-                    Software Development graduate from Nelson Mandela University with experience in 
-                    C#, SQL, software design, AI, and Python-based data analysis.
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    <Button
-                      size="sm"
-                      className="bg-white text-[hsl(335,73%,49%)] hover:bg-white/90 font-semibold text-xs"
-                      asChild
-                    >
-                      <a href="#projects">
-                        View Projects
-                        <ArrowDown className="w-3 h-3 ml-1" />
-                      </a>
-                    </Button>
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="border-white/50 text-white hover:bg-white/10 font-semibold text-xs"
-                      asChild
-                    >
-                      <a href="#contact">
-                        <Download className="w-3 h-3 mr-1" />
-                        Download Resume
-                      </a>
-                    </Button>
-                  </div>
-                </motion.div>
-
-                {/* Social Links */}
+                {/* Social Links - Top Right of Image */}
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -177,23 +124,55 @@ export const HeroSection = () => {
                   >
                     <Linkedin className="w-4 h-4" />
                   </a>
+                  <a
+                    href="mailto:kgorutla9@gmail.com"
+                    className="p-2.5 rounded-full bg-white/90 text-[hsl(335,73%,40%)] hover:bg-[hsl(349,88%,74%)] hover:text-white hover:scale-110 transition-all duration-300 shadow-lg"
+                    aria-label="Email"
+                  >
+                    <Mail className="w-4 h-4" />
+                  </a>
                 </motion.div>
 
-                {/* Floating badge */}
+                {/* Text Card Below Image */}
                 <motion.div
-                  className="absolute -top-3 left-4 px-3 py-1.5 rounded-full bg-white/95 shadow-lg backdrop-blur-sm"
-                  animate={{
-                    y: [0, -6, 0],
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4, duration: 0.6 }}
+                  className="mt-6 text-center lg:text-left"
                 >
-                  <div className="flex items-center gap-1.5">
-                    <Sparkles className="w-3 h-3 text-[hsl(349,88%,55%)]" />
-                    <span className="text-xs font-semibold text-[hsl(335,73%,40%)]">Open to opportunities</span>
+                  <h1 className="font-display text-2xl sm:text-3xl font-bold text-white leading-tight mb-2">
+                    Aspiring AI &{" "}
+                    <span className="bg-gradient-to-r from-[hsl(48,85%,70%)] to-[hsl(349,88%,74%)] bg-clip-text text-transparent">
+                      Software Developer
+                    </span>
+                  </h1>
+                  <p className="text-white/80 text-sm sm:text-base mb-3 font-medium">
+                    Ethical & Applied AI Solutions
+                  </p>
+                  <p className="text-white/70 text-sm leading-relaxed mb-5">
+                    Software Development graduate from Nelson Mandela University with experience in 
+                    C#, SQL, software design, AI, and Python-based data analysis.
+                  </p>
+                  <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
+                    <Button
+                      className="bg-white text-[hsl(335,73%,49%)] hover:bg-white/90 font-semibold"
+                      asChild
+                    >
+                      <a href="#projects">
+                        View Projects
+                        <ArrowDown className="w-4 h-4 ml-2" />
+                      </a>
+                    </Button>
+                    <Button
+                      variant="outline"
+                      className="border-white/50 text-white hover:bg-white/10 font-semibold"
+                      asChild
+                    >
+                      <a href="#contact">
+                        <Download className="w-4 h-4 mr-2" />
+                        Download Resume
+                      </a>
+                    </Button>
                   </div>
                 </motion.div>
               </div>
