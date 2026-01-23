@@ -51,25 +51,19 @@ export const Navigation = () => {
         }`}
       >
         <div className="section-container">
-          <div className="flex items-center justify-between h-16 md:h-20">
-            {/* Empty space for layout balance */}
-            <div className="w-20" />
-
-            {/* Spacer for center alignment */}
-            <div className="hidden md:block" />
-
+          <div className="flex items-center justify-end h-12 md:h-14">
             {/* Desktop Social Icons */}
-            <div className="hidden md:flex items-center gap-3">
+            <div className="hidden md:flex items-center gap-2">
               {socialLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-full text-muted-foreground hover:text-secondary hover:bg-secondary/10 transition-all duration-200"
+                  className="p-1.5 rounded-full text-muted-foreground hover:text-secondary hover:bg-secondary/10 transition-all duration-200"
                   aria-label={link.name}
                 >
-                  <link.icon className="w-5 h-5" />
+                  <link.icon className="w-4 h-4" />
                 </a>
               ))}
             </div>
