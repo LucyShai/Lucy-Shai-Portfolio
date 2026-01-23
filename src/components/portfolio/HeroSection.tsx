@@ -86,7 +86,7 @@ export const HeroSection = () => {
           >
             <div className="relative">
               {/* Profile Image Container */}
-              <div className="relative w-full max-w-md mx-auto lg:mx-0">
+              <div className="relative w-full max-w-xs mx-auto lg:mx-0">
                 {/* Main profile image */}
                 <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[3/4]">
                   <img 
