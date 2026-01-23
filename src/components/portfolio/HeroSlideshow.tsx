@@ -74,9 +74,9 @@ export const HeroSlideshow = () => {
   const current = slides[currentSlide];
 
   return (
-    <div className="relative w-full h-[280px] lg:h-[350px]">
+    <div className="relative w-full h-[240px] sm:h-[280px] lg:h-[320px]">
       {/* Slideshow Card */}
-      <div className="relative bg-white/95 backdrop-blur-xl rounded-3xl p-6 lg:p-8 shadow-2xl border border-white/40 overflow-hidden h-full flex flex-col justify-center">
+      <div className="relative bg-white/95 backdrop-blur-xl rounded-2xl p-5 lg:p-6 shadow-2xl border border-white/40 overflow-hidden h-full flex flex-col justify-center">
         {/* Decorative gradient corner */}
         <div 
           className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl ${current.color} opacity-20 rounded-bl-full`}
