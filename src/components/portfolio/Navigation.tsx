@@ -65,22 +65,8 @@ export const Navigation = () => {
               Lucy<span className="text-secondary">Shai</span>
             </motion.a>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection(link.href);
-                  }}
-                  className="nav-link text-sm font-medium"
-                >
-                  {link.name}
-                </a>
-              ))}
-            </div>
+            {/* Spacer for center alignment */}
+            <div className="hidden md:block" />
 
             {/* Desktop Social Icons */}
             <div className="hidden md:flex items-center gap-3">
