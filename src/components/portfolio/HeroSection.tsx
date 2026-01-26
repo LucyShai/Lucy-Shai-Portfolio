@@ -190,11 +190,10 @@ export const HeroSection = () => {
                 </Button>
                 <Button
                   size="sm"
-                  variant="outline"
-                  className="border-white/50 text-white hover:bg-white/10 font-semibold"
+                  className="bg-[hsl(48,85%,70%)] text-[hsl(335,50%,15%)] hover:bg-[hsl(48,85%,60%)] font-semibold shadow-lg"
                   asChild
                 >
-                  <a href="#contact">
+                  <a href="/resume/Lucy_Shai_CV.pdf" download="Lucy_Shai_CV.pdf">
                     <Download className="w-3 h-3 mr-1" />
                     Resume
                   </a>
