@@ -78,7 +78,7 @@ export const HeroSection = () => {
       <div className="section-container relative z-10 pt-14 lg:pt-12">
         {/* Creative Name Header with Slide-in Animation */}
         <motion.div 
-          className="text-center mb-6 lg:mb-8"
+          className="text-left mb-6 lg:mb-8"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
@@ -88,7 +88,7 @@ export const HeroSection = () => {
               initial={{ x: "-100%" }}
               animate={{ x: 0 }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-              className="flex items-center justify-center gap-3"
+              className="flex items-center justify-start gap-3"
             >
               <motion.span 
                 className="h-[2px] w-12 bg-gradient-to-r from-transparent to-white/60"
