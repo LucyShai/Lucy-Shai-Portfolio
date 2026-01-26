@@ -99,17 +99,25 @@ export const HeroSection = () => {
               <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
                 <motion.span 
                   className="inline-block text-white"
-                  initial={{ y: 50, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
+                  initial={{ x: -100, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
                 >
                   Lucy
                 </motion.span>
                 <motion.span 
+                  className="inline-block text-white mx-2"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.3, delay: 0.6 }}
+                >
+                  {" "}
+                </motion.span>
+                <motion.span 
                   className="inline-block bg-gradient-to-r from-[hsl(48,85%,70%)] via-[hsl(349,88%,74%)] to-[hsl(301,82%,80%)] bg-clip-text text-transparent"
-                  initial={{ y: 50, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.6, delay: 0.5 }}
+                  initial={{ x: 100, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.5 }}
                 >
                   Shai
                 </motion.span>
@@ -122,14 +130,6 @@ export const HeroSection = () => {
               />
             </motion.div>
           </div>
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.9, duration: 0.5 }}
-            className="text-white/60 text-sm tracking-[0.3em] uppercase mt-2"
-          >
-            Portfolio
-          </motion.p>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
