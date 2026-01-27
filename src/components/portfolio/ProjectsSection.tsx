@@ -14,9 +14,11 @@ const projects = [
     outcome: "Identified bias patterns, reduced unfair outcomes, connected findings to ethical impact.",
     color: "secondary",
     featured: true,
+    demoLink: "#",
+    codeLink: "#",
   },
   {
-    title: "Sentiment Analysis Dashboard",
+    title: "SentimentiQ Dashboard",
     icon: BarChart3,
     problem: "Difficult to analyze large text data for sentiment.",
     solution: "Interactive dashboard classifying text with confidence scores.",
@@ -24,6 +26,8 @@ const projects = [
     outcome: "Multi-class classification, visual sentiment analysis.",
     color: "primary",
     featured: true,
+    demoLink: "https://word-whisperer-dash.vercel.app/",
+    codeLink: "#",
   },
   {
     title: "End-to-End AI Capstone",
@@ -34,6 +38,8 @@ const projects = [
     outcome: "Integrated AI technologies, delivered working prototype.",
     color: "highlight",
     featured: true,
+    demoLink: "#",
+    codeLink: "#",
   },
 ];
 
@@ -146,13 +152,13 @@ export const ProjectsSection = () => {
                 {/* Action Buttons */}
                 <div className="mt-4 flex gap-3">
                   <Button variant="secondary" size="sm" className="flex-1" asChild>
-                    <a href="#" target="_blank" rel="noopener noreferrer">
+                    <a href={project.codeLink} target="_blank" rel="noopener noreferrer">
                       <Github className="w-4 h-4" />
                       Code
                     </a>
                   </Button>
                   <Button variant="outline" size="sm" className="flex-1" asChild>
-                    <a href="#" target="_blank" rel="noopener noreferrer">
+                    <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
                       <ExternalLink className="w-4 h-4" />
                       Demo
                     </a>
