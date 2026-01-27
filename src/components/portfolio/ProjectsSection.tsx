@@ -16,6 +16,8 @@ const projects = [
     featured: true,
     demoLink: "https://capeitinitiative-my.sharepoint.com/:p:/g/personal/tersh_kgaphola_capaciti_org_za/IQCUSrbd3cqaSLY4WifqsdkTAan-iRc_znCMNpZYbgb6hvs?e=WnciCs",
     liveLink: "https://github.com/TershK/Bais-Report.git",
+    demoLabel: "Presentation",
+    liveLabel: "Notebook",
   },
   {
     title: "SentimentiQ Dashboard",
@@ -154,13 +156,13 @@ export const ProjectsSection = () => {
                   <Button variant="secondary" size="sm" className="flex-1" asChild>
                     <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
                       <Play className="w-4 h-4" />
-                      Demo
+                      {project.demoLabel || "Demo"}
                     </a>
                   </Button>
                   <Button variant="outline" size="sm" className="flex-1" asChild>
                     <a href={project.liveLink || "#"} target="_blank" rel="noopener noreferrer">
                       <ExternalLink className="w-4 h-4" />
-                      Live App
+                      {project.liveLabel || "Live App"}
                     </a>
                   </Button>
                 </div>
