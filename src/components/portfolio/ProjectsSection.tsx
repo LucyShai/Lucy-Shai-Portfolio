@@ -15,8 +15,7 @@ const projects = [
     color: "secondary",
     featured: true,
     demoLink: "#",
-    codeLink: "#",
-    videoLink: null,
+    liveLink: "#",
   },
   {
     title: "SentimentiQ Dashboard",
@@ -27,9 +26,8 @@ const projects = [
     outcome: "Multi-class classification, visual sentiment analysis.",
     color: "primary",
     featured: true,
-    demoLink: "https://word-whisperer-dash.vercel.app/",
-    codeLink: "#",
-    videoLink: "https://capeitinitiative-my.sharepoint.com/:v:/g/personal/lebogang_molepo_capaciti_org_za/IQCeFBNN4FbLSo0nkC8yq30AAQVfvq4cVNSblpJW6rbbFd8?e=ja8L6L&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D",
+    demoLink: "https://capeitinitiative-my.sharepoint.com/:v:/g/personal/lebogang_molepo_capaciti_org_za/IQCeFBNN4FbLSo0nkC8yq30AAQVfvq4cVNSblpJW6rbbFd8?e=ja8L6L&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D",
+    liveLink: "https://word-whisperer-dash.vercel.app/",
   },
   {
     title: "End-to-End AI Capstone",
@@ -41,8 +39,7 @@ const projects = [
     color: "highlight",
     featured: true,
     demoLink: "#",
-    codeLink: "#",
-    videoLink: null,
+    liveLink: "#",
   },
 ];
 
@@ -154,16 +151,14 @@ export const ProjectsSection = () => {
 
                 {/* Action Buttons */}
                 <div className="mt-4 flex flex-wrap gap-2">
-                  {project.videoLink && (
-                    <Button variant="secondary" size="sm" className="flex-1" asChild>
-                      <a href={project.videoLink} target="_blank" rel="noopener noreferrer">
-                        <Play className="w-4 h-4" />
-                        Video
-                      </a>
-                    </Button>
-                  )}
-                  <Button variant="outline" size="sm" className="flex-1" asChild>
+                  <Button variant="secondary" size="sm" className="flex-1" asChild>
                     <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
+                      <Play className="w-4 h-4" />
+                      Demo
+                    </a>
+                  </Button>
+                  <Button variant="outline" size="sm" className="flex-1" asChild>
+                    <a href={project.liveLink || "#"} target="_blank" rel="noopener noreferrer">
                       <ExternalLink className="w-4 h-4" />
                       Live App
                     </a>
