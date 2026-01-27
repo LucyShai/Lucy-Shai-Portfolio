@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { ExternalLink, Github, Shield, BarChart3, Layers } from "lucide-react";
+import { ExternalLink, Github, Shield, BarChart3, Layers, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const projects = [
@@ -16,6 +16,7 @@ const projects = [
     featured: true,
     demoLink: "#",
     codeLink: "#",
+    videoLink: null,
   },
   {
     title: "SentimentiQ Dashboard",
@@ -28,6 +29,7 @@ const projects = [
     featured: true,
     demoLink: "https://word-whisperer-dash.vercel.app/",
     codeLink: "#",
+    videoLink: "https://capeitinitiative-my.sharepoint.com/:v:/g/personal/lebogang_molepo_capaciti_org_za/IQCeFBNN4FbLSo0nkC8yq30AAQVfvq4cVNSblpJW6rbbFd8?e=ja8L6L&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D",
   },
   {
     title: "End-to-End AI Capstone",
@@ -40,6 +42,7 @@ const projects = [
     featured: true,
     demoLink: "#",
     codeLink: "#",
+    videoLink: null,
   },
 ];
 
@@ -150,17 +153,19 @@ export const ProjectsSection = () => {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="mt-4 flex gap-3">
-                  <Button variant="secondary" size="sm" className="flex-1" asChild>
-                    <a href={project.codeLink} target="_blank" rel="noopener noreferrer">
-                      <Github className="w-4 h-4" />
-                      Code
-                    </a>
-                  </Button>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {project.videoLink && (
+                    <Button variant="secondary" size="sm" className="flex-1" asChild>
+                      <a href={project.videoLink} target="_blank" rel="noopener noreferrer">
+                        <Play className="w-4 h-4" />
+                        Video
+                      </a>
+                    </Button>
+                  )}
                   <Button variant="outline" size="sm" className="flex-1" asChild>
                     <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
                       <ExternalLink className="w-4 h-4" />
-                      Demo
+                      Live App
                     </a>
                   </Button>
                 </div>
