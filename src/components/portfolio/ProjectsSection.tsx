@@ -14,8 +14,8 @@ const projects = [
     outcome: "Identified bias patterns, reduced unfair outcomes, connected findings to ethical impact.",
     color: "secondary",
     featured: true,
-    demoLink: "#",
-    liveLink: "#",
+    demoLink: "https://capeitinitiative-my.sharepoint.com/:p:/g/personal/tersh_kgaphola_capaciti_org_za/IQCUSrbd3cqaSLY4WifqsdkTAan-iRc_znCMNpZYbgb6hvs?e=WnciCs",
+    liveLink: "https://github.com/TershK/Bais-Report.git",
   },
   {
     title: "SentimentiQ Dashboard",
