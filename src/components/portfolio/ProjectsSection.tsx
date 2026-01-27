@@ -1,23 +1,57 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { ExternalLink, Github, Shield, BarChart3, Layers, Play } from "lucide-react";
+import { ExternalLink, Play, Shield, BarChart3, Layers, MessageSquare, Lightbulb, FileText, Briefcase } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const projects = [
   {
-    title: "Bias Audit Report",
-    icon: Shield,
-    problem: "ML models can disadvantage certain groups (loan approvals).",
-    solution: "Audited models, quantified bias, applied mitigation techniques.",
-    technologies: ["Python", "Jupyter Notebook", "IBM AI Fairness 360", "Pandas", "Matplotlib"],
-    outcome: "Identified bias patterns, reduced unfair outcomes, connected findings to ethical impact.",
+    title: "AI Concept Chatbot",
+    icon: MessageSquare,
+    problem: "Beginners struggle to understand core AI terminology and concepts.",
+    solution: "Built an interactive educational chatbot explaining AI fundamentals with Q&A pairs.",
+    technologies: ["Dialogflow", "ChatGPT API", "No-Code Tools"],
+    outcome: "15+ Q&A pairs covering ML, NLP, LLMs with conversation flows and learning recommendations.",
+    color: "primary",
+    featured: false,
+    demoLink: "#",
+    liveLink: "#",
+  },
+  {
+    title: "Sector-Specific AI Prototype",
+    icon: Lightbulb,
+    problem: "Need to apply AI concepts to solve real-world sector challenges.",
+    solution: "Designed AI prototype addressing specific problems in chosen sector.",
+    technologies: ["Teachable Machine", "Hugging Face", "Figma", "Miro"],
+    outcome: "Functional prototype with user flow, demo video, and ethical analysis.",
     color: "secondary",
-    featured: true,
-    demoLink: "https://capeitinitiative-my.sharepoint.com/:p:/g/personal/tersh_kgaphola_capaciti_org_za/IQCUSrbd3cqaSLY4WifqsdkTAan-iRc_znCMNpZYbgb6hvs?e=WnciCs",
-    liveLink: "https://github.com/TershK/Bais-Report.git",
-    demoLabel: "Presentation",
-    liveLabel: "Notebook",
+    featured: false,
+    demoLink: "#",
+    liveLink: "#",
+  },
+  {
+    title: "Custom Content Generator",
+    icon: FileText,
+    problem: "Creating high-quality, specialized content is time-consuming.",
+    solution: "Built a generative AI tool with optimized prompt templates.",
+    technologies: ["Generative AI APIs", "Prompt Engineering", "Python"],
+    outcome: "5+ prompt templates, content generation tool with customization parameters.",
+    color: "highlight",
+    featured: false,
+    demoLink: "#",
+    liveLink: "#",
+  },
+  {
+    title: "AI Resume Builder",
+    icon: Briefcase,
+    problem: "Creating ATS-friendly, industry-optimized resumes is challenging.",
+    solution: "Developed intelligent resume generator with keyword optimization.",
+    technologies: ["AI APIs", "Frontend UI", "PDF Generation"],
+    outcome: "Multiple templates, ATS compatibility checking, job description matching.",
+    color: "primary",
+    featured: false,
+    demoLink: "#",
+    liveLink: "#",
   },
   {
     title: "SentimentiQ Dashboard",
@@ -26,10 +60,24 @@ const projects = [
     solution: "Interactive dashboard classifying text with confidence scores.",
     technologies: ["Python", "NLP APIs", "Streamlit", "Hugging Face"],
     outcome: "Multi-class classification, visual sentiment analysis.",
-    color: "primary",
+    color: "secondary",
     featured: true,
     demoLink: "https://capeitinitiative-my.sharepoint.com/:v:/g/personal/lebogang_molepo_capaciti_org_za/IQCeFBNN4FbLSo0nkC8yq30AAQVfvq4cVNSblpJW6rbbFd8?e=ja8L6L&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D",
     liveLink: "https://word-whisperer-dash.vercel.app/",
+  },
+  {
+    title: "Bias Audit Report",
+    icon: Shield,
+    problem: "ML models can disadvantage certain groups (loan approvals).",
+    solution: "Audited models, quantified bias, applied mitigation techniques.",
+    technologies: ["Python", "Jupyter Notebook", "IBM AI Fairness 360", "Pandas", "Matplotlib"],
+    outcome: "Identified bias patterns, reduced unfair outcomes, connected findings to ethical impact.",
+    color: "highlight",
+    featured: true,
+    demoLink: "https://capeitinitiative-my.sharepoint.com/:p:/g/personal/tersh_kgaphola_capaciti_org_za/IQCUSrbd3cqaSLY4WifqsdkTAan-iRc_znCMNpZYbgb6hvs?e=WnciCs",
+    liveLink: "https://github.com/TershK/Bais-Report.git",
+    demoLabel: "Presentation",
+    liveLabel: "Notebook",
   },
   {
     title: "End-to-End AI Capstone",
@@ -38,7 +86,7 @@ const projects = [
     solution: "Scalable, user-friendly AI platform with ethical considerations.",
     technologies: ["AI APIs", "Frontend UI", "Backend Logic", "OpenAI"],
     outcome: "Integrated AI technologies, delivered working prototype.",
-    color: "highlight",
+    color: "primary",
     featured: true,
     demoLink: "#",
     liveLink: "#",
@@ -78,7 +126,7 @@ export const ProjectsSection = () => {
         </motion.div>
 
         {/* Projects Grid */}
-        <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-6">
           {projects.map((project, index) => (
             <motion.article
               key={project.title}
