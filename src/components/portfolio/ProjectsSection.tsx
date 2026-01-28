@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
-import { ExternalLink, Play, Shield, BarChart3, Layers, MessageSquare, Lightbulb, FileText, Briefcase } from "lucide-react";
+import { useRef, useState } from "react";
+import { ExternalLink, Play, Shield, BarChart3, Layers, MessageSquare, Lightbulb, FileText, Briefcase, ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 const projects = [
   {
     title: "AI Concept Chatbot",
@@ -93,6 +93,115 @@ const projects = [
   },
 ];
 
+const ProjectCard = ({ project, index, isInView }: { project: typeof projects[0]; index: number; isInView: boolean }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 40 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ delay: index * 0.1, duration: 0.5 }}
+      className="group bg-card rounded-2xl overflow-hidden shadow-lg border border-border card-hover flex flex-col"
+    >
+      {/* Project Header */}
+      <div
+        className={`p-5 ${
+          project.color === "secondary"
+            ? "bg-gradient-to-br from-secondary/10 to-secondary/5"
+            : project.color === "primary"
+            ? "bg-gradient-to-br from-primary/10 to-primary/5"
+            : "bg-gradient-to-br from-highlight/10 to-highlight/5"
+        }`}
+      >
+        <div className="flex items-start justify-between mb-3">
+          <div
+            className={`w-12 h-12 rounded-xl flex items-center justify-center ${
+              project.color === "secondary"
+                ? "bg-secondary text-secondary-foreground"
+                : project.color === "primary"
+                ? "bg-primary text-primary-foreground"
+                : "bg-highlight text-highlight-foreground"
+            }`}
+          >
+            <project.icon className="w-6 h-6" />
+          </div>
+          {project.featured && (
+            <span className="px-2 py-0.5 rounded-full text-xs font-semibold bg-secondary/20 text-secondary border border-secondary/30">
+              Featured
+            </span>
+          )}
+        </div>
+        <h3 className="font-display text-lg font-bold text-foreground group-hover:text-secondary transition-colors leading-tight">
+          {project.title}
+        </h3>
+        <p className="text-sm text-muted-foreground mt-2 line-clamp-2">{project.problem}</p>
+      </div>
+
+      {/* Project Content */}
+      <div className="p-5 flex-1 flex flex-col">
+        <Collapsible open={isOpen} onOpenChange={setIsOpen}>
+          <CollapsibleContent className="space-y-3 mb-4">
+            <div>
+              <h4 className="text-sm font-semibold text-foreground mb-1">Solution</h4>
+              <p className="text-sm text-muted-foreground">{project.solution}</p>
+            </div>
+            <div>
+              <h4 className="text-sm font-semibold text-foreground mb-1">Outcome</h4>
+              <p className="text-sm text-muted-foreground">{project.outcome}</p>
+            </div>
+
+            {/* Technologies */}
+            <div className="pt-3 border-t border-border">
+              <div className="flex flex-wrap gap-1.5">
+                {project.technologies.map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-2 py-0.5 rounded-md text-xs font-medium bg-muted text-muted-foreground"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </CollapsibleContent>
+
+          <CollapsibleTrigger asChild>
+            <Button variant="ghost" size="sm" className="w-full mb-3 text-muted-foreground hover:text-foreground">
+              {isOpen ? (
+                <>
+                  <ChevronUp className="w-4 h-4" />
+                  Show less
+                </>
+              ) : (
+                <>
+                  <ChevronDown className="w-4 h-4" />
+                  Show more
+                </>
+              )}
+            </Button>
+          </CollapsibleTrigger>
+        </Collapsible>
+
+        {/* Action Buttons */}
+        <div className="mt-auto flex flex-wrap gap-2">
+          <Button variant="secondary" size="sm" className="flex-1" asChild>
+            <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
+              <Play className="w-4 h-4" />
+              {project.demoLabel || "Demo"}
+            </a>
+          </Button>
+          <Button variant="outline" size="sm" className="flex-1" asChild>
+            <a href={project.liveLink || "#"} target="_blank" rel="noopener noreferrer">
+              <ExternalLink className="w-4 h-4" />
+              {project.liveLabel || "Live App"}
+            </a>
+          </Button>
+        </div>
+      </div>
+    </motion.article>
+  );
+};
+
 export const ProjectsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -111,7 +220,7 @@ export const ProjectsSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <span className="inline-block text-secondary font-semibold text-sm uppercase tracking-wider mb-4">
             Featured Work
@@ -126,96 +235,9 @@ export const ProjectsSection = () => {
         </motion.div>
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {projects.map((project, index) => (
-            <motion.article
-              key={project.title}
-              initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: index * 0.15, duration: 0.5 }}
-              className="group bg-card rounded-2xl overflow-hidden shadow-lg border border-border card-hover flex flex-col"
-            >
-              {/* Project Header */}
-              <div
-                className={`p-6 ${
-                  project.color === "secondary"
-                    ? "bg-gradient-to-br from-secondary/10 to-secondary/5"
-                    : project.color === "primary"
-                    ? "bg-gradient-to-br from-primary/10 to-primary/5"
-                    : "bg-gradient-to-br from-highlight/10 to-highlight/5"
-                }`}
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <div
-                    className={`w-14 h-14 rounded-xl flex items-center justify-center ${
-                      project.color === "secondary"
-                        ? "bg-secondary text-secondary-foreground"
-                        : project.color === "primary"
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-highlight text-highlight-foreground"
-                    }`}
-                  >
-                    <project.icon className="w-7 h-7" />
-                  </div>
-                  {project.featured && (
-                    <span className="px-3 py-1 rounded-full text-xs font-semibold bg-secondary/20 text-secondary border border-secondary/30">
-                      Featured
-                    </span>
-                  )}
-                </div>
-                <h3 className="font-display text-xl font-bold text-foreground group-hover:text-secondary transition-colors">
-                  {project.title}
-                </h3>
-              </div>
-
-              {/* Project Content */}
-              <div className="p-6 flex-1 flex flex-col">
-                <div className="space-y-4 flex-1">
-                  <div>
-                    <h4 className="text-sm font-semibold text-foreground mb-1">Problem</h4>
-                    <p className="text-sm text-muted-foreground">{project.problem}</p>
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-semibold text-foreground mb-1">Solution</h4>
-                    <p className="text-sm text-muted-foreground">{project.solution}</p>
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-semibold text-foreground mb-1">Outcome</h4>
-                    <p className="text-sm text-muted-foreground">{project.outcome}</p>
-                  </div>
-                </div>
-
-                {/* Technologies */}
-                <div className="mt-6 pt-4 border-t border-border">
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2.5 py-1 rounded-md text-xs font-medium bg-muted text-muted-foreground"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Action Buttons */}
-                <div className="mt-4 flex flex-wrap gap-2">
-                  <Button variant="secondary" size="sm" className="flex-1" asChild>
-                    <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
-                      <Play className="w-4 h-4" />
-                      {project.demoLabel || "Demo"}
-                    </a>
-                  </Button>
-                  <Button variant="outline" size="sm" className="flex-1" asChild>
-                    <a href={project.liveLink || "#"} target="_blank" rel="noopener noreferrer">
-                      <ExternalLink className="w-4 h-4" />
-                      {project.liveLabel || "Live App"}
-                    </a>
-                  </Button>
-                </div>
-              </div>
-            </motion.article>
+            <ProjectCard key={project.title} project={project} index={index} isInView={isInView} />
           ))}
         </div>
       </div>
