@@ -50,8 +50,9 @@ const projects = [
     outcome: "Multiple templates, ATS compatibility checking, job description matching.",
     color: "primary",
     featured: false,
-    demoLink: "#",
-    liveLink: "#",
+    demoLink: "https://apt-aptitude.vercel.app/",
+    liveLink: "https://github.com/TershK/apt-aptitude",
+    liveLabel: "Source Code",
   },
   {
     title: "SentimentiQ Dashboard",
@@ -88,8 +89,8 @@ const projects = [
     outcome: "Integrated AI technologies, delivered working prototype.",
     color: "primary",
     featured: true,
-    demoLink: "#",
-    liveLink: "#",
+    demoLink: "https://drive.google.com/file/d/1aS8nSBP7-EXRGPF3VZc4iWmeSmNErGC3/view?usp=sharing",
+    liveLink: "https://rsa-agent.vercel.app/",
   },
 ];
 
