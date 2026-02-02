@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Sparkles, Brain, Shield, Code } from "lucide-react";
+import profileImage from "@/assets/profile-image.jpg";
 
 const highlights = [
   {
@@ -59,10 +60,12 @@ export const AboutSection = () => {
               
               {/* Profile card */}
               <div className="bg-card rounded-3xl p-8 shadow-lg border border-border">
-                <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-secondary to-secondary/60 flex items-center justify-center">
-                  <span className="text-5xl font-display font-bold text-secondary-foreground">
-                    LS
-                  </span>
+                <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-secondary/30">
+                  <img 
+                    src={profileImage}
+                    alt="Lucy Shai"
+                    className="w-full h-full object-cover object-top"
+                  />
                 </div>
                 <h3 className="text-2xl font-display font-bold text-center mb-2">
                   Lucy Shai
