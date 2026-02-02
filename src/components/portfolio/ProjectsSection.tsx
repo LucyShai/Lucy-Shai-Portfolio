@@ -1,17 +1,17 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { ExternalLink, Play, Shield, BarChart3, Layers, MessageSquare, Lightbulb, FileText, Briefcase, ChevronDown, ChevronUp } from "lucide-react";
+import { ExternalLink, Play, Shield, BarChart3, Layers, GraduationCap, FileText, Briefcase, ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 const projects = [
   {
-    title: "Sector-Specific AI Prototype",
-    icon: Lightbulb,
-    problem: "Need to apply AI concepts to solve real-world sector challenges.",
-    solution: "Designed AI prototype addressing specific problems in chosen sector.",
-    technologies: ["Teachable Machine", "Hugging Face", "Figma", "Miro"],
-    outcome: "Functional prototype with user flow, demo video, and ethical analysis.",
+    title: "Talu Future Assistance",
+    icon: GraduationCap,
+    problem: "TaLu gives learners personalized career guidance and matches them to suitable universities. Many students struggle to know which universities they qualify for. This often leads to late, incorrect, or missed applications.",
+    solution: "Built an AI-powered platform that provides personalized career guidance and university matching.",
+    technologies: ["AI APIs", "React", "Career Matching Algorithms"],
+    outcome: "Personalized university recommendations based on student qualifications and career goals.",
     color: "secondary",
     featured: false,
     demoLink: "#",
