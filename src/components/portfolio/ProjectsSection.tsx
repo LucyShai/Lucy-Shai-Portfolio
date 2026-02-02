@@ -6,18 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 const projects = [
   {
-    title: "AI Concept Chatbot",
-    icon: MessageSquare,
-    problem: "Our AI chatbot answers questions on AI and related fields while suggesting follow-ups. It can also create images and diagrams from user prompts.",
-    solution: "Built an interactive educational chatbot explaining AI fundamentals with Q&A pairs.",
-    technologies: ["Dialogflow", "ChatGPT API", "No-Code Tools"],
-    outcome: "15+ Q&A pairs covering ML, NLP, LLMs with conversation flows and learning recommendations.",
-    color: "primary",
-    featured: false,
-    demoLink: "#",
-    liveLink: "https://m365.cloud.microsoft/chat/?titleId=T_73a29d16-6cdd-3955-7885-a0b463237406&source=embedded-builder",
-  },
-  {
     title: "Sector-Specific AI Prototype",
     icon: Lightbulb,
     problem: "Need to apply AI concepts to solve real-world sector challenges.",
