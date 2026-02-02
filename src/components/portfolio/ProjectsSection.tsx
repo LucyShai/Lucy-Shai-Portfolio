@@ -76,7 +76,7 @@ const projects = [
     technologies: ["AI APIs", "Real-time Detection", "Location Tracking", "React"],
     outcome: "Fast, secure, and reliable emergency response system built for high demand.",
     color: "primary",
-    featured: true,
+    featured: false,
     demoLink: "https://drive.google.com/file/d/1aS8nSBP7-EXRGPF3VZc4iWmeSmNErGC3/view?usp=sharing",
     liveLink: "https://rsa-agent.vercel.app/",
   },
