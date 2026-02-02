@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { ExternalLink, Play, Shield, BarChart3, Layers, GraduationCap, FileText, Briefcase, ChevronDown, ChevronUp } from "lucide-react";
+import { ExternalLink, Play, Shield, BarChart3, Layers, GraduationCap, Home, Briefcase, ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 const projects = [
@@ -18,15 +18,15 @@ const projects = [
     liveLink: "#",
   },
   {
-    title: "Custom Content Generator",
-    icon: FileText,
-    problem: "Creating high-quality, specialized content is time-consuming.",
-    solution: "Built a generative AI tool with optimized prompt templates.",
-    technologies: ["Generative AI APIs", "Prompt Engineering", "Python"],
-    outcome: "5+ prompt templates, content generation tool with customization parameters.",
+    title: "ArchVision AI Home Builder",
+    icon: Home,
+    problem: "ArchVision AI Home Builder is an AI-powered web app for designing and visualizing homes. It helps users create floor plans and 3D home visuals.",
+    solution: "The app offers an interactive way to customize and plan home layouts with AI assistance.",
+    technologies: ["AI APIs", "React", "3D Visualization", "Floor Plan Generation"],
+    outcome: "Interactive home design tool with floor plan creation and 3D visualization capabilities.",
     color: "highlight",
     featured: false,
-    demoLink: "#",
+    demoLink: "https://archvision-roan.vercel.app/",
     liveLink: "#",
   },
   {
