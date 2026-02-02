@@ -72,11 +72,13 @@ export const EthicsSection = () => {
             Ethics & <span className="text-secondary">Responsible AI</span>
           </h2>
           <p className="text-primary-foreground/80 max-w-3xl mx-auto text-lg leading-relaxed">
-            I am committed to creating AI solutions that are fair, transparent, and socially 
-            responsible. My projects emphasize <span className="text-secondary font-semibold">bias detection</span>, 
-            <span className="text-secondary font-semibold"> ethical decision-making</span>, and 
-            <span className="text-secondary font-semibold"> data privacy</span>, ensuring technology 
-            benefits users and communities equally.
+            I am committed to creating AI and software solutions that are fair, transparent, and socially 
+            responsible, aligned with my goal of contributing to innovative technology that positively impacts 
+            users and communities. My work emphasizes <span className="text-secondary font-semibold">bias detection</span>, 
+            <span className="text-secondary font-semibold"> ethical decision-making</span>, 
+            <span className="text-secondary font-semibold"> data privacy</span>, and 
+            <span className="text-secondary font-semibold"> accessibility</span>, ensuring technology 
+            benefits everyone equally. I uphold the following principles in all projects I undertake:
           </p>
         </motion.div>
 
