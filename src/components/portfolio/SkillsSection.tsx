@@ -14,46 +14,104 @@ import {
   Shield,
   Zap,
   FileText,
+  Server,
+  Cloud,
+  Globe,
+  Lock,
+  Layers,
+  Layout,
 } from "lucide-react";
 
 const skillCategories = [
   {
-    title: "Technical Skills",
+    title: "Programming & Development",
     icon: Code2,
     gradient: "from-[hsl(335,73%,49%)] to-[hsl(349,88%,74%)]",
     skills: [
+      { name: "C#", icon: Code2 },
       { name: "Python", icon: Code2 },
+      { name: "JavaScript", icon: Code2 },
+      { name: "SQL", icon: Database },
+      { name: "ASP.NET Core MVC", icon: Layers },
+      { name: "React", icon: Layout },
+      { name: "HTML/CSS", icon: Globe },
+      { name: "Bootstrap", icon: Layout },
+      { name: "REST APIs", icon: Zap },
+      { name: "OOP & MVC", icon: Layers },
+    ],
+  },
+  {
+    title: "Database & Data",
+    icon: Database,
+    gradient: "from-[hsl(301,82%,80%)] to-[hsl(315,36%,66%)]",
+    skills: [
+      { name: "SQL Server", icon: Database },
+      { name: "MySQL", icon: Database },
+      { name: "Database Design", icon: Layers },
+      { name: "Stored Procedures", icon: FileText },
+      { name: "Data Modeling", icon: BarChart3 },
+      { name: "Data Manipulation", icon: BarChart3 },
+    ],
+  },
+  {
+    title: "Cloud & DevOps",
+    icon: Cloud,
+    gradient: "from-[hsl(349,64%,78%)] to-[hsl(313,24%,75%)]",
+    skills: [
+      { name: "Azure Fundamentals", icon: Cloud },
+      { name: "AWS Fundamentals", icon: Cloud },
+      { name: "CI/CD Pipelines", icon: Zap },
+      { name: "Git/GitHub", icon: GitBranch },
+      { name: "Version Control", icon: GitBranch },
+    ],
+  },
+  {
+    title: "AI & Prompt Engineering",
+    icon: Brain,
+    gradient: "from-[hsl(335,73%,49%)] to-[hsl(301,82%,80%)]",
+    skills: [
       { name: "Machine Learning", icon: Brain },
       { name: "NLP & Sentiment Analysis", icon: MessageSquare },
+      { name: "Prompt Optimization", icon: Sparkles },
+      { name: "LLM Applications", icon: Brain },
+      { name: "AI Workflows", icon: Zap },
       { name: "Bias Detection", icon: Shield },
-      { name: "Prompt Engineering", icon: Sparkles },
-      { name: "API Integration", icon: Zap },
     ],
   },
   {
     title: "Tools & Platforms",
     icon: Wrench,
-    gradient: "from-[hsl(301,82%,80%)] to-[hsl(315,36%,66%)]",
+    gradient: "from-[hsl(301,82%,80%)] to-[hsl(349,64%,78%)]",
     skills: [
       { name: "Jupyter Notebook", icon: FileText },
       { name: "Google Colab", icon: Code2 },
-      { name: "GitHub", icon: GitBranch },
       { name: "Streamlit / Gradio", icon: BarChart3 },
       { name: "No-Code AI Tools", icon: Sparkles },
       { name: "IBM AI Fairness 360", icon: Shield },
     ],
   },
   {
+    title: "IT & Security",
+    icon: Lock,
+    gradient: "from-[hsl(349,64%,78%)] to-[hsl(335,73%,49%)]",
+    skills: [
+      { name: "Networking Basics", icon: Globe },
+      { name: "Cybersecurity Principles", icon: Shield },
+      { name: "Secure Coding", icon: Lock },
+      { name: "Troubleshooting", icon: Wrench },
+    ],
+  },
+  {
     title: "Professional Skills",
     icon: Users,
-    gradient: "from-[hsl(349,64%,78%)] to-[hsl(313,24%,75%)]",
+    gradient: "from-[hsl(313,24%,75%)] to-[hsl(349,88%,74%)]",
     skills: [
-      { name: "Ethical AI Reasoning", icon: Shield },
-      { name: "Data Interpretation", icon: BarChart3 },
-      { name: "Documentation", icon: FileText },
-      { name: "Communication", icon: MessageSquare },
-      { name: "Agile Teamwork", icon: Users },
       { name: "Problem Solving", icon: Brain },
+      { name: "Analytical Thinking", icon: BarChart3 },
+      { name: "Communication", icon: MessageSquare },
+      { name: "Teamwork", icon: Users },
+      { name: "Adaptability", icon: Sparkles },
+      { name: "Works Under Pressure", icon: Zap },
     ],
   },
 ];
@@ -93,7 +151,7 @@ export const SkillsSection = () => {
         </motion.div>
 
         {/* Skills Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {skillCategories.map((category, categoryIndex) => (
             <motion.div
               key={category.title}
