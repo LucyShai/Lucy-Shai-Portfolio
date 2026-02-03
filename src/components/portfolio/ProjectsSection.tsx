@@ -15,7 +15,7 @@ const projects = [
     color: "secondary",
     featured: false,
     demoLink: "#",
-    liveLink: "#",
+    liveLink: "https://arena-berry-21220384.figma.site/",
   },
   {
     title: "ArchVision AI Home Builder",
