@@ -4,10 +4,20 @@ import { useRef, useState } from "react";
 import { ExternalLink, Play, Shield, BarChart3, Layers, GraduationCap, Home, Briefcase, ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+
+// Project images
+import taluImage from "@/assets/projects/talu-career.jpg";
+import archvisionImage from "@/assets/projects/archvision-home.jpg";
+import resumeImage from "@/assets/projects/resume-builder.jpg";
+import sentimentiqImage from "@/assets/projects/sentimentiq-dashboard.jpg";
+import biasImage from "@/assets/projects/bias-audit.jpg";
+import rsaImage from "@/assets/projects/rsa-sentinel.jpg";
+
 const projects = [
   {
     title: "Talu Future Assistance",
     icon: GraduationCap,
+    image: taluImage,
     problem: "TaLu gives learners personalized career guidance and matches them to suitable universities. Many students struggle to know which universities they qualify for. This often leads to late, incorrect, or missed applications.",
     solution: "Built an AI-powered platform that provides personalized career guidance and university matching.",
     technologies: ["AI APIs", "React", "Career Matching Algorithms"],
@@ -20,6 +30,7 @@ const projects = [
   {
     title: "ArchVision AI Home Builder",
     icon: Home,
+    image: archvisionImage,
     problem: "ArchVision AI Home Builder is an AI-powered web app for designing and visualizing homes. It helps users create floor plans and 3D home visuals.",
     solution: "The app offers an interactive way to customize and plan home layouts with AI assistance.",
     technologies: ["AI APIs", "React", "3D Visualization", "Floor Plan Generation"],
@@ -32,6 +43,7 @@ const projects = [
   {
     title: "AI Resume Builder",
     icon: Briefcase,
+    image: resumeImage,
     problem: "Creating ATS-friendly, industry-optimized resumes is challenging.",
     solution: "Developed intelligent resume generator with keyword optimization.",
     technologies: ["AI APIs", "Frontend UI", "PDF Generation"],
@@ -45,6 +57,7 @@ const projects = [
   {
     title: "SentimentiQ Dashboard",
     icon: BarChart3,
+    image: sentimentiqImage,
     problem: "Difficult to analyze large text data for sentiment.",
     solution: "Interactive dashboard classifying text with confidence scores.",
     technologies: ["Python", "NLP APIs", "Streamlit", "Hugging Face"],
@@ -57,6 +70,7 @@ const projects = [
   {
     title: "Bias Audit Report",
     icon: Shield,
+    image: biasImage,
     problem: "ML models can disadvantage certain groups (loan approvals).",
     solution: "Audited models, quantified bias, applied mitigation techniques.",
     technologies: ["Python", "Jupyter Notebook", "IBM AI Fairness 360", "Pandas", "Matplotlib"],
@@ -71,6 +85,7 @@ const projects = [
   {
     title: "RSA SENTINEL",
     icon: Shield,
+    image: rsaImage,
     problem: "RSA Agent is a real-time emergency response app that quickly detects incidents and alerts responders.",
     solution: "Provides accurate location tracking, ensures user safety, and protects privacy.",
     technologies: ["AI APIs", "Real-time Detection", "Location Tracking", "React"],
@@ -92,34 +107,34 @@ const ProjectCard = ({ project, index, isInView }: { project: typeof projects[0]
       transition={{ delay: index * 0.1, duration: 0.5 }}
       className="group bg-card rounded-2xl overflow-hidden shadow-lg border border-border card-hover flex flex-col"
     >
-      {/* Project Header */}
-      <div
-        className={`p-5 ${
-          project.color === "secondary"
-            ? "bg-gradient-to-br from-secondary/10 to-secondary/5"
-            : project.color === "primary"
-            ? "bg-gradient-to-br from-primary/10 to-primary/5"
-            : "bg-gradient-to-br from-highlight/10 to-highlight/5"
-        }`}
-      >
-        <div className="flex items-start justify-between mb-3">
-          <div
-            className={`w-12 h-12 rounded-xl flex items-center justify-center ${
-              project.color === "secondary"
-                ? "bg-secondary text-secondary-foreground"
-                : project.color === "primary"
-                ? "bg-primary text-primary-foreground"
-                : "bg-highlight text-highlight-foreground"
-            }`}
-          >
-            <project.icon className="w-6 h-6" />
-          </div>
-          {project.featured && (
-            <span className="px-2 py-0.5 rounded-full text-xs font-semibold bg-secondary/20 text-secondary border border-secondary/30">
-              Featured
-            </span>
-          )}
+      {/* Project Image */}
+      <div className="relative h-40 overflow-hidden">
+        <img 
+          src={project.image} 
+          alt={project.title}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent" />
+        {project.featured && (
+          <span className="absolute top-3 right-3 px-2 py-0.5 rounded-full text-xs font-semibold bg-secondary/90 text-secondary-foreground border border-secondary/30">
+            Featured
+          </span>
+        )}
+        <div
+          className={`absolute bottom-3 left-3 w-10 h-10 rounded-lg flex items-center justify-center ${
+            project.color === "secondary"
+              ? "bg-secondary text-secondary-foreground"
+              : project.color === "primary"
+              ? "bg-primary text-primary-foreground"
+              : "bg-highlight text-highlight-foreground"
+          }`}
+        >
+          <project.icon className="w-5 h-5" />
         </div>
+      </div>
+
+      {/* Project Header */}
+      <div className="p-4">
         <h3 className="font-display text-lg font-bold text-foreground group-hover:text-secondary transition-colors leading-tight">
           {project.title}
         </h3>
