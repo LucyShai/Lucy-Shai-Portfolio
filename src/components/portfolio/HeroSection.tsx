@@ -193,7 +193,7 @@ export const HeroSection = () => {
                   className="bg-[hsl(48,85%,70%)] text-[hsl(335,50%,15%)] hover:bg-[hsl(48,85%,60%)] font-semibold shadow-lg"
                   asChild
                 >
-                  <a href="https://drive.google.com/file/d/1c6-nChe5V2Sj598wytNfHzct8NRU83g6/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                  <a href="https://docs.google.com/document/d/1n0RR8ZP5yCMyc4Jx-Q6Bjbw4TkBIrMm3/edit?usp=sharing&ouid=115679582975354821590&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer">
                     <Download className="w-3 h-3 mr-1" />
                     Resume
                   </a>
