@@ -26,8 +26,8 @@ const projects = [
     outcome: "Interactive home design tool with floor plan creation and 3D visualization capabilities.",
     color: "highlight",
     featured: false,
-    demoLink: "https://archvision-roan.vercel.app/",
-    liveLink: "#",
+    demoLink: "#",
+    liveLink: "https://archvision-roan.vercel.app/",
   },
   {
     title: "AI Resume Builder",
@@ -194,6 +194,9 @@ const ProjectCard = ({ project, index, isInView }: { project: typeof projects[0]
 export const ProjectsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [showAllProjects, setShowAllProjects] = useState(false);
+  
+  const displayedProjects = showAllProjects ? projects : projects.slice(0, 3);
 
   return (
     <section id="projects" className="section-padding bg-background relative overflow-hidden">
@@ -224,11 +227,40 @@ export const ProjectsSection = () => {
         </motion.div>
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-          {projects.map((project, index) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {displayedProjects.map((project, index) => (
             <ProjectCard key={project.title} project={project} index={index} isInView={isInView} />
           ))}
         </div>
+
+        {/* Show More/Less Button */}
+        {projects.length > 3 && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ delay: 0.4, duration: 0.5 }}
+            className="flex justify-center mt-8"
+          >
+            <Button
+              variant="outline"
+              size="lg"
+              onClick={() => setShowAllProjects(!showAllProjects)}
+              className="group"
+            >
+              {showAllProjects ? (
+                <>
+                  <ChevronUp className="w-4 h-4 mr-2 group-hover:-translate-y-0.5 transition-transform" />
+                  Show Less
+                </>
+              ) : (
+                <>
+                  <ChevronDown className="w-4 h-4 mr-2 group-hover:translate-y-0.5 transition-transform" />
+                  Show More Projects ({projects.length - 3} more)
+                </>
+              )}
+            </Button>
+          </motion.div>
+        )}
       </div>
     </section>
   );
