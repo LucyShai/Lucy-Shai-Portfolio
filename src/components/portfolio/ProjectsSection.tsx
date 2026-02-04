@@ -24,7 +24,6 @@ const projects = [
     outcome: "Personalized university recommendations based on student qualifications and career goals.",
     color: "secondary",
     featured: false,
-    demoLink: "#",
     liveLink: "https://arena-berry-21220384.figma.site/",
   },
   {
@@ -37,7 +36,6 @@ const projects = [
     outcome: "Interactive home design tool with floor plan creation and 3D visualization capabilities.",
     color: "highlight",
     featured: false,
-    demoLink: "#",
     liveLink: "https://archvision-roan.vercel.app/",
   },
   {
@@ -50,9 +48,7 @@ const projects = [
     outcome: "Multiple templates, ATS compatibility checking, job description matching.",
     color: "primary",
     featured: false,
-    demoLink: "https://apt-aptitude.vercel.app/",
-    liveLink: "https://github.com/TershK/apt-aptitude",
-    liveLabel: "Source Code",
+    liveLink: "https://apt-aptitude.vercel.app/",
   },
   {
     title: "SentimentiQ Dashboard",
@@ -188,18 +184,22 @@ const ProjectCard = ({ project, index, isInView }: { project: typeof projects[0]
 
         {/* Action Buttons */}
         <div className="mt-auto flex flex-wrap gap-2">
-          <Button variant="secondary" size="sm" className="flex-1" asChild>
-            <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
-              <Play className="w-4 h-4" />
-              {project.demoLabel || "Demo"}
-            </a>
-          </Button>
-          <Button variant="outline" size="sm" className="flex-1" asChild>
-            <a href={project.liveLink || "#"} target="_blank" rel="noopener noreferrer">
-              <ExternalLink className="w-4 h-4" />
-              {project.liveLabel || "Live App"}
-            </a>
-          </Button>
+          {project.demoLink && (
+            <Button variant="secondary" size="sm" className="flex-1" asChild>
+              <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
+                <Play className="w-4 h-4" />
+                {project.demoLabel || "Demo"}
+              </a>
+            </Button>
+          )}
+          {project.liveLink && (
+            <Button variant={project.demoLink ? "outline" : "secondary"} size="sm" className="flex-1" asChild>
+              <a href={project.liveLink} target="_blank" rel="noopener noreferrer">
+                <ExternalLink className="w-4 h-4" />
+                {project.liveLabel || "Live App"}
+              </a>
+            </Button>
+          )}
         </div>
       </div>
     </motion.article>
