@@ -113,6 +113,14 @@
                className="text-muted-foreground mt-6 pt-4 border-t border-border"
              >
                Excited to apply these skills to real-world AI projects and continue growing in the field! 💡🤖
+                <a 
+                  href="https://coursera.org/share/34e8493e8152ca96e461231a4b85c269"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block mt-3 text-secondary hover:text-secondary/80 underline underline-offset-4 transition-colors"
+                >
+                  View my Coursera Certificate →
+                </a>
              </motion.p>
            </motion.div>
  
