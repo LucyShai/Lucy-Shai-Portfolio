@@ -7,61 +7,30 @@ const courseCategories = [
   {
     icon: Bot,
     title: "AI & ML Foundations",
-    courses: [
-      "AI For Everyone",
-      "Introduction to Artificial Intelligence (AI)",
-      "AI Essentials",
-      "Artificial Intelligence on Microsoft Azure",
-    ],
+    courses: ["AI For Everyone", "Introduction to AI", "AI Essentials", "AI on Microsoft Azure"],
   },
   {
     icon: Laptop,
     title: "Programming & Development",
-    courses: [
-      "Python for Data Science, AI & Development",
-      "Building AI Powered Chatbots Without Programming",
-    ],
+    courses: ["Python for Data Science, AI & Development", "Building AI Chatbots Without Programming"],
   },
   {
     icon: Brain,
     title: "Generative AI & LLMs",
-    courses: [
-      "Introduction to Generative AI",
-      "Generative AI with Large Language Models",
-      "AI Foundations: Prompt Engineering with ChatGPT",
-    ],
+    courses: ["Introduction to Generative AI", "Generative AI with LLMs", "Prompt Engineering with ChatGPT"],
   },
   {
     icon: Shield,
     title: "Responsible AI & Ethics",
-    courses: [
-      "Introduction to Responsible AI",
-      "Trustworthy AI: Managing Bias, Ethics, and Accountability",
-    ],
+    courses: ["Introduction to Responsible AI", "Managing Bias, Ethics & Accountability"],
   },
 ];
 
 const education = [
-  {
-    degree: "Diploma in Information Technology",
-    institution: "Nelson Mandela University",
-    link: null,
-  },
-  {
-    degree: "Flowgear Certification",
-    institution: "Flowgear",
-    link: "https://certifications.flowgear.net/users/certificates/ZMO8-P5BM-DMQ9-JK5G/landing?noredir",
-  },
-  {
-    degree: "Higher Certificate in Information Technology",
-    institution: "Nelson Mandela University",
-    link: null,
-  },
-  {
-    degree: "National Senior Certificate",
-    institution: "Ingqayizivele Secondary",
-    link: null,
-  },
+  { degree: "Diploma in IT", institution: "Nelson Mandela University", link: null },
+  { degree: "Flowgear Certification", institution: "Flowgear", link: "https://certifications.flowgear.net/users/certificates/ZMO8-P5BM-DMQ9-JK5G/landing?noredir" },
+  { degree: "Higher Certificate in IT", institution: "Nelson Mandela University", link: null },
+  { degree: "National Senior Certificate", institution: "Ingqayizivele Secondary", link: null },
 ];
 
 export const CertificationSection = () => {
@@ -69,157 +38,126 @@ export const CertificationSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="certification" className="section-padding bg-background relative overflow-hidden">
-      {/* Background elements */}
+    <section id="certification" className="py-12 md:py-16 bg-background relative overflow-hidden">
       <div className="absolute inset-0">
         <div className="absolute top-1/4 right-0 w-64 h-64 bg-secondary/5 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 left-0 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
       </div>
 
       <div className="section-container relative z-10" ref={ref}>
-        {/* Education Section */}
+        {/* Combined Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="mb-16"
+          className="text-center mb-8"
         >
-          <div className="text-center mb-10">
-            <span className="inline-block text-secondary font-semibold text-sm uppercase tracking-wider mb-4">
-              Academic Background
-            </span>
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 italic">
-              <span className="text-secondary">Education</span>
-            </h2>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {education.map((edu, index) => (
-              <motion.div
-                key={edu.degree}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.1 + index * 0.1, duration: 0.5 }}
-                className="bg-card rounded-xl p-5 border border-border hover:border-secondary/50 transition-colors"
-              >
-                <div className="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center mb-4">
-                  <GraduationCap className="w-5 h-5 text-secondary" />
-                </div>
-                <h4 className="font-semibold text-foreground text-sm mb-1">{edu.degree}</h4>
-                <p className="text-muted-foreground text-xs">{edu.institution}</p>
-                {edu.link && (
-                  <a
-                    href={edu.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 mt-3 text-xs text-secondary hover:text-secondary/80 transition-colors"
-                  >
-                    View Certificate <ExternalLink className="w-3 h-3" />
-                  </a>
-                )}
-              </motion.div>
-            ))}
-          </div>
+          <span className="inline-block text-secondary font-semibold text-sm uppercase tracking-wider mb-2">
+            Education & Certifications
+          </span>
+          <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground italic">
+            Academic <span className="text-secondary">Background</span>
+          </h2>
         </motion.div>
 
-        {/* Coursera Section Header */}
+        {/* Education Row */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="text-center mb-12"
+          transition={{ delay: 0.1, duration: 0.5 }}
+          className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-10"
         >
-          <span className="inline-block text-secondary font-semibold text-sm uppercase tracking-wider mb-4">
-            Professional Development
-          </span>
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 italic">
-            Coursera <span className="text-secondary">Certification</span>
-          </h2>
-          <p className="text-muted-foreground max-w-3xl mx-auto text-base leading-relaxed">
-            Successfully completed an AI Bootcamp on Coursera with verified learner status. 
-            Gained foundational knowledge in machine learning, neural networks, natural language processing, 
-            and AI ethics. Developed practical, hands-on skills for real-world AI applications.
-          </p>
+          {education.map((edu, index) => (
+            <div
+              key={edu.degree}
+              className="bg-card rounded-lg p-3 border border-border hover:border-secondary/50 transition-colors"
+            >
+              <div className="flex items-center gap-2 mb-2">
+                <GraduationCap className="w-4 h-4 text-secondary flex-shrink-0" />
+                <h4 className="font-semibold text-foreground text-xs">{edu.degree}</h4>
+              </div>
+              <p className="text-muted-foreground text-xs pl-6">{edu.institution}</p>
+              {edu.link && (
+                <a
+                  href={edu.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 mt-2 pl-6 text-xs text-secondary hover:text-secondary/80 transition-colors"
+                >
+                  View <ExternalLink className="w-3 h-3" />
+                </a>
+              )}
+            </div>
+          ))}
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Courses List */}
+        {/* Coursera Section */}
+        <div className="grid lg:grid-cols-5 gap-8 items-start">
+          {/* Courses - Takes 3 columns */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ delay: 0.4, duration: 0.5 }}
-            className="space-y-6"
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="lg:col-span-3"
           >
-            <h3 className="text-lg font-semibold text-foreground mb-4">Courses I completed:</h3>
+            <h3 className="text-base font-semibold text-foreground mb-4">
+              Coursera AI Bootcamp <span className="text-muted-foreground font-normal text-sm">— Courses Completed</span>
+            </h3>
             
-            {courseCategories.map((category, categoryIndex) => (
-              <motion.div
-                key={category.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.5 + categoryIndex * 0.1, duration: 0.5 }}
-                className="space-y-2"
-              >
-                <div className="flex items-center gap-2">
-                  <category.icon className="w-5 h-5 text-secondary" />
-                  <span className="font-semibold text-foreground">{category.title}</span>
-                </div>
-                <ul className="space-y-1 pl-7">
-                  {category.courses.map((course) => (
-                    <li key={course} className="text-muted-foreground text-sm">
-                      {course}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
+            <div className="grid sm:grid-cols-2 gap-3">
+              {courseCategories.map((category, categoryIndex) => (
+                <motion.div
+                  key={category.title}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.3 + categoryIndex * 0.05, duration: 0.4 }}
+                  className="bg-muted/30 rounded-lg p-3"
+                >
+                  <div className="flex items-center gap-2 mb-2">
+                    <category.icon className="w-4 h-4 text-secondary" />
+                    <span className="font-medium text-foreground text-xs">{category.title}</span>
+                  </div>
+                  <ul className="space-y-0.5 pl-6">
+                    {category.courses.map((course) => (
+                      <li key={course} className="text-muted-foreground text-xs">
+                        • {course}
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              ))}
+            </div>
 
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 1 } : {}}
-              transition={{ delay: 0.9, duration: 0.5 }}
-              className="text-muted-foreground mt-6 pt-4 border-t border-border"
+            <a 
+              href="https://coursera.org/share/34e8493e8152ca96e461231a4b85c269"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 mt-4 text-sm text-secondary hover:text-secondary/80 underline underline-offset-4 transition-colors"
             >
-              Excited to apply these skills to real-world AI projects and continue growing in the field! 💡🤖
-               <a 
-                 href="https://coursera.org/share/34e8493e8152ca96e461231a4b85c269"
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 className="block mt-3 text-secondary hover:text-secondary/80 underline underline-offset-4 transition-colors"
-               >
-                 View my Coursera Certificate →
-               </a>
-            </motion.p>
+              View Coursera Certificate <ExternalLink className="w-3 h-3" />
+            </a>
           </motion.div>
 
-          {/* Certificate Badge */}
+          {/* Badge - Takes 2 columns */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ delay: 0.6, duration: 0.5 }}
-            className="flex justify-center lg:justify-end"
+            transition={{ delay: 0.4, duration: 0.5 }}
+            className="lg:col-span-2 flex justify-center"
           >
             <div className="relative">
-              {/* Badge Container */}
-              <div className="w-72 h-72 md:w-80 md:h-80 rounded-full border-8 border-muted flex flex-col items-center justify-center text-center p-8 bg-card shadow-lg">
-                {/* CAPACITI Logo */}
-                <span className="text-xs tracking-[0.3em] text-muted-foreground mb-2">C A P A C I T I</span>
-                
-                {/* Main Title */}
-                <h4 className="font-display text-xl md:text-2xl font-bold text-foreground leading-tight mb-4">
+              <div className="w-48 h-48 md:w-56 md:h-56 rounded-full border-6 border-muted flex flex-col items-center justify-center text-center p-6 bg-card shadow-lg">
+                <span className="text-[10px] tracking-[0.2em] text-muted-foreground mb-1">C A P A C I T I</span>
+                <h4 className="font-display text-base md:text-lg font-bold text-foreground leading-tight mb-3">
                   Artificial<br />Intelligence (AI)<br />Bootcamp
                 </h4>
-                
-                {/* Powered by Coursera */}
-                <div className="bg-primary text-primary-foreground px-4 py-2 rounded-md">
-                  <span className="text-xs">powered by</span>
-                  <span className="font-bold ml-1">Coursera</span>
+                <div className="bg-primary text-primary-foreground px-3 py-1.5 rounded-md">
+                  <span className="text-[10px]">powered by</span>
+                  <span className="font-bold ml-1 text-xs">Coursera</span>
                 </div>
               </div>
-
-              {/* Decorative Award Icon */}
-              <div className="absolute -top-2 -right-2 w-12 h-12 bg-secondary rounded-full flex items-center justify-center shadow-lg">
-                <Award className="w-6 h-6 text-secondary-foreground" />
+              <div className="absolute -top-1 -right-1 w-10 h-10 bg-secondary rounded-full flex items-center justify-center shadow-lg">
+                <Award className="w-5 h-5 text-secondary-foreground" />
               </div>
             </div>
           </motion.div>
