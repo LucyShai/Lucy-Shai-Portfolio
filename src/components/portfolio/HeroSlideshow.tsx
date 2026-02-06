@@ -145,7 +145,10 @@ export const HeroSlideshow = () => {
         {slides.map((slide, index) => (
           <button
             key={slide.id}
-            onClick={() => goToSlide(index)}
+            onClick={() => {
+              goToSlide(index);
+              scrollToSection(slide.id);
+            }}
             className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300 ${
               index === currentSlide
                 ? "bg-white text-[hsl(335,73%,49%)] shadow-md"
